@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Text Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    
+<ion-button (click)="toonFalse()">Back</ion-button>
+<ion-button (click)="toonToast()"><ion-icon name="print"></ion-icon></ion-button>
+
+      <ion-list>
+          <ion-item color="primary" *ngFor="let i of arrayFirebase">
+            <p> {{i}} </p>
+          </ion-item>
+        </ion-list>
+
+
+</ion-content>

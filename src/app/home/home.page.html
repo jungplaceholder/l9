@@ -1,0 +1,133 @@
+<!--
+  dit is stap 1 die de gebruiker met uitvoeren
+  basically klikt hij/zij eerst op 1 vd 3 knoppen waarna ze een lijst (indien values)
+  krijgt te zien
+
+  stap 2 is dan dat ze op een item klikt op de lijst 
+  stap 3 is dat ze een tijdsperdiod kiest mbv datetime
+  stap 4 tenslotte kiest ze voor om de output ofwel in textformaat ofwel in een chart
+  weer te geven 
+
+  ! bedoeling is dat als de user een gebruiker is dat de default active bij stap 1
+  op personen staat en dat enkel zijn naam erin staat (aangezien dit logisch is
+  mits de rechten vd users).
+  -->
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Summary Page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="timesheets">
+      <ion-segment-button value="type1">
+        Personen
+      </ion-segment-button>
+      <ion-segment-button value="type2">
+        Projecten
+      </ion-segment-button>
+      <ion-segment-button value="type3">
+        Bedrijven
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="timesheets">
+    <ion-list *ngSwitchCase="'type1'">
+      <!-- DUMMY VALUES, moet firebase nog instellen dit wordt later vervangen door actual
+        waarden -->
+        
+      <ion-item>
+        
+        <h4>Ali Ceo</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Manon Terwatere</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Zabuza Flower</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Den Jos</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Park Chae young</h4>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'type2'">
+      <ion-item>
+        <h4>Project Mobile App</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Project No Russia</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Project Bouwwerf</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Planning bodemonderzoek</h4>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'type3'">
+      <ion-item>
+        <h4>EhB</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Fotosynthese Kodak</h4>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <ion-item>
+    <ion-label>Van</ion-label>
+    <ion-datetime display-format="DD MMM, YYYY"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tot</ion-label>
+    <ion-datetime display-format="DD MMM, YYYY"></ion-datetime>
+  </ion-item>
+
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="functieToonTextModal()">Show Text Modal</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" (click)="functieToonGraphModal()">Show Graph Modal</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+<!-- DEZE GEDEELTE IS VOOR TEST PURPOSES
+    OM DE BACKEND TE KUNNEN VERANDEREN
+    DIT HOORT NIET BIJ DE END PRODUCT 
+              BEGIN -->
+<div>
+  <ion-item>
+    <ion-input [(ngModel)]="inputFirebase">Type hier text ofzo: </ion-input>
+  </ion-item>
+
+  <ion-button (click)="functiePushNaarDb()"> Add</ion-button>
+
+  <ion-list >
+    <ion-item *ngFor="let i of arrayFirebase, let j = index" (click)="functieDeleteGanseLijst(j)">
+      <h3> {{i}}  </h3>
+    </ion-item>
+  </ion-list>
+
+</div>
+
+<!-- DEZE GEDEELTE IS VOOR TEST PURPOSES
+    OM DE BACKEND TE KUNNEN VERANDEREN
+    DIT HOORT NIET BIJ DE END PRODUCT  
+              END -->
+</ion-content>

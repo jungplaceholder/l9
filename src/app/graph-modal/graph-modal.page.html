@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Graph Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button (click)="toonFalse()">Back</ion-button>
+  <ion-button (click)="toonToast()"><ion-icon name="print"></ion-icon></ion-button>
+  <div>
+      <ion-item>
+          <ion-label>"Onderstaande bargrafiek toont de timesheets van:"</ion-label>
+        </ion-item>
+  </div>
+  <div >
+      <canvas baseChart
+        [datasets]='myChartData'
+        [labels]='myChartLabels'
+        [chartType]='myChartType'>
+      </canvas>
+    </div>
+</ion-content>
